@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  devops:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    container_name: ubuntu-devops
+
+    volumes:
+      - ./:/workspace
+
+    env_file:
+      - .env
+
+    tty: true
+    stdin_open: true
+
+    platform: linux/arm64

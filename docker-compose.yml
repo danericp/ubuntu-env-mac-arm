@@ -5,14 +5,13 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-
     container_name: ubuntu-devops
-
-    volumes:
-      - ./:/workspace
-
     env_file:
       - .env
+    environment:
+      - TZ=America/New_York
+    volumes:
+      - ./workspace:/workspace
 
     tty: true
     stdin_open: true

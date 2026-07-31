@@ -1,19 +1,21 @@
+# Docker Hub - arm64v8/ubuntu:26.10
+# https://hub.docker.com/layers/arm64v8/ubuntu/26.10/images/sha256-d206b9277d9b8fab7fdefa816b4a6e290d57c9e98e82a00474cb8a1f806cb9e1
 FROM arm64v8/ubuntu@sha256:5a9a2edeaaa2a41c90a6c306b304baf49decc562e7b32d036aa9f9f61c9a5b84
 
-# Disable Interactive process in background
+# Set the DEBIAN_FRONTEND environment variable to noninteractive to prevent interactive prompts during package installation
 ENV DEBIAN_FRONTEND=noninteractive
 
-# Set Timezone
+# Container timezone is set to New York, USA
 ENV TZ=America/New_York
 
-# Instal MSMTP Packages
+# Install required packages for sending emails (MSMTP) and mail utilities, then clean up the package cache to reduce image size
 RUN apt-get update && \
     apt-get install -y \
         ca-certificates \
         mailutils msmtp msmtp-mta \
     && apt-get clean
 
-# Install base packages
+# Install required packages for development and system utilities
 RUN apt-get update && \
     apt-get install -y \
         ca-certificates curl \
@@ -29,15 +31,18 @@ RUN apt-get update && \
         python3 python3-pip \
     && apt-get clean
 
-# Set working directory
+# Set the working directory to /workspace
 WORKDIR /workspace
 
-# Copy init Files
+# Copy the msmtprc configuration file and the setup_bashrc.sh script into the container
+COPY init/msmtprc /etc/msmtprc
 COPY init/setup_bashrc.sh /tmp/
 
-# Run customized prompt script
+# Set the permissions of the msmtprc configuration file to be readable and writable only by the owner
+RUN chmod 600 /etc/msmtprc
+# Execute the setup_bashrc.sh script to customize the bash prompt and remove the script after execution
 RUN bash /tmp/setup_bashrc.sh && \
     rm /tmp/setup_bashrc.sh
 
-# Default shell
+# Set the default shell to bash
 CMD ["bash"]

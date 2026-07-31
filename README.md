@@ -5,25 +5,27 @@ This environment has been developed, tested and running inside Mac Tahoe.
 
 ## Table of Contents
 
-- [Common Commands](#common-commands)
+- [Reference Commands](#reference-commands)
 - [Log](#log)
 
 ## Files and Directories
 
 | Directory | Description |
 |-|-|
+| ```/etc/msmtprc``` | MSMTP Configuration File |
 | ```/root/.bashrc``` | |
 | ```/root/.profile``` | |
 | ```/root/.ssh``` | |
 | ```/tmp``` | |
 | ```/workspace``` | Scripts Location |
 
-## Common Commands
+## Reference Commands
 
 | Command | Description |
 |-|-|
 | ```docker compose up -d --build``` | Docker command used for building up containers |
 | ```docker exec -it ubuntu-devops bash``` | Docker command used for running the dev container interactive terminal. |
+| ```echo -e To: <email>@<domain>\nFrom: <email>@<domain>\nSubject: Quick Test\n\nThis is the message body. \| sendmail -t``` | Test the sendmail function |
 
 ## Log
 

@@ -8,6 +8,16 @@ This environment has been developed, tested and running inside Mac Tahoe.
 - [Common Commands](#common-commands)
 - [Log](#log)
 
+## Files and Directories
+
+| Directory | Description |
+|-|-|
+| ```/root/.bashrc``` | |
+| ```/root/.profile``` | |
+| ```/root/.ssh``` | |
+| ```/tmp``` | |
+| ```/workspace``` | Scripts Location |
+
 ## Common Commands
 
 | Command | Description |

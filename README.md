@@ -5,8 +5,8 @@ This environment has been developed, tested and running inside Mac Tahoe.
 
 ## Table of Contents
 
+- [Files and Directories](#files-and-directories)
 - [Reference Commands](#reference-commands)
-- [Log](#log)
 
 ## Files and Directories
 
@@ -26,9 +26,3 @@ This environment has been developed, tested and running inside Mac Tahoe.
 | ```docker compose up -d --build``` | Docker command used for building up containers |
 | ```docker exec -it ubuntu-devops bash``` | Docker command used for running the dev container interactive terminal. |
 | ```echo -e To: <email>@<domain>\nFrom: <email>@<domain>\nSubject: Quick Test\n\nThis is the message body. \| sendmail -t``` | Test the sendmail function |
-
-## Log
-
-| Date | Log |
-|-|-|
-| 20260727 | Initial Files |

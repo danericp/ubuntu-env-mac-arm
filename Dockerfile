@@ -15,10 +15,16 @@ RUN apt-get update && \
         mailutils msmtp msmtp-mta \
     && apt-get clean
 
+# Install Java (OpenJDK 17 is a stable choice)
+RUN apt-get update && \
+    apt-get install -y openjdk-17-jdk && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 # Install required packages for development and system utilities
 RUN apt-get update && \
     apt-get install -y \
-        ca-certificates curl \
+        curl \
         git gnupg grep \
         jq \
         lsb-release \
